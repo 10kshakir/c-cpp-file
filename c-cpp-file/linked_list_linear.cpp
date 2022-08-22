@@ -1,5 +1,6 @@
 #include <iostream>
 
+
 using namespace std;
 
 class Node
@@ -19,19 +20,23 @@ struct test
     int position[1000];
 };
 
-void print_mid(Node * &head)
+int find_mid(Node * &head)
 {
-    if(head!=NULL)
+    Node *fast =head;
+    Node *slow =head;
+    if (head!=NULL)
     {
-        Node* f_pointer =head;
-        Node* s_pointer =head;
-        while(f_pointer!=NULL&&f_pointer->next!=NULL)
+        while (fast != NULL && fast->next != NULL)
         {
-            f_pointer=f_pointer->next->next;
-            s_pointer=s_pointer->next;
+                fast = fast->next->next;
+                slow = slow->next;
         }
-        cout<<"The middle element is "<<s_pointer->value<<endl;
-    }else{cout<<"The head is empty "<<endl;}
+        return slow->value;
+    }
+
+    return-1;
+
+
 }
 
 void insert_at_head(Node* &head,int n)
@@ -355,12 +360,15 @@ Node* reverse_recursive(Node*&head)
     return new_head;
 }
 
+
+
 int main()
 {
     Node * head = NULL;
     int n;
     int pos;
-    int c=2;
+    bool  detect;
+    int c;
     cout<<"choice 1 for insert at head "<<endl;
     cout<<"choice 2 for insert at tail "<<endl;
     cout<<"choice 3 for insert at specific position "<<endl;
@@ -375,11 +383,12 @@ int main()
     cout<<"choice 12 for reverse a list non recursive way"<<endl;
     cout<<"choice 13 for print mid"<<endl;
     cout<<"choice 0 to end  "<<endl;
+    cout<<"enter choice ";
+    cin>>c;
 
     while(c!=0)
     {
-        cout<<"enter choice ";
-        cin>>c;
+
 
         switch(c)
         {
@@ -471,11 +480,17 @@ int main()
             head =reverse_non_recursive(head);
             break;
         case 13:
-            print_mid(head);
+            int mid;
+            mid =find_mid(head);
+            if(mid ==-1)cout<<"the list is empty"<<endl;
+            cout<<"middle integer  of the  list is "<<mid<<endl;
+
             break;
         default:
            break;
         }
+        cout<<"enter choice ";
+        cin>>c;
 
 
 

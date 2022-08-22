@@ -60,38 +60,23 @@ void even_linked_list(Node*&head)
     }
 }
 
-void recursive(Node*&head,int n)
-{
-    if(n==0)return;
 
-    recursive(head->next,n=n-1);
-    if(n!=1)cout<<" ->";
-    cout<<head->value;
-
-
-}
 
 int main()
 {
     Node* head =NULL;
-    int n,d;
-    cin>>n>>d;
+    int n;
+    cin>>n;
     for(int i =0;i<n;i++)
     {
         int a;
         cin>>a;
         insert_at_tail(head,a);
     }
-//    even_linked_list(head);
+   even_linked_list(head);
 
-//    print_linked_list(head);
-    for(int i =0;i<d;i++)
-    {
-        int b;
-        cin>>b;
-        recursive(head,b);
-        cout<<endl;
-    }
+    print_linked_list(head);
+
 
 
     return 0;

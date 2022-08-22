@@ -29,12 +29,13 @@ int main()
     }
 
     int maxi_count=0;
+    cout<<endl;
     for(int i =0;i<n1;i++)
     {
 
         if(count[i]>0)
         {
-            cout<<i<<" comes "<<count[i]<<" times"<<endl;
+            cout<<i<<" => "<<count[i]<<endl;
         }
     }
 

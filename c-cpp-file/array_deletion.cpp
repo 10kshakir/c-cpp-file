@@ -10,6 +10,19 @@ void print_array(int a[],int n)
     }
     cout<<endl;
 }
+
+void deletion_array(int a[],int *n,int pos)
+{
+    int d =*n;
+    for(int i =pos;i<d ;i++)
+    {
+        a[i]=a[i+1];
+
+    }
+    d--;
+    *n=d;
+
+}
 int main()
 {
     int a[50];
@@ -28,22 +41,8 @@ int main()
     cin>>pos;
 
 
-    if(pos<0||pos>size-1)
-    {
-        cout<<"Invalid index";
-    }
-    else
-    {
-        if(pos ==size-1) size--;
-        else{
+    deletion_array(a,&size,pos);
 
-            for(int i =pos;i<size;i++)
-            {
-                a[i]=a[i+1];
-            }
-            size--;
-        }
-    }
     cout<<"Array after deletion : ";
     print_array(a,size);
 

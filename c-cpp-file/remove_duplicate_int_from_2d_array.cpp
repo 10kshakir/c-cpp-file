@@ -59,6 +59,7 @@ int main()
              ind++;
          }
      }
+     cout<<endl;
      print_2d_array(*a,row,column);
      return 0;
 }

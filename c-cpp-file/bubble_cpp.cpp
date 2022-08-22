@@ -18,14 +18,14 @@ void bubble_sort(int a[],int n)
 {
     for(int i =1;i<n;i++)
     {
-        cout<<i<<"st Iteration"<<endl;
+
         int flag =0;
         for(int j =0;j<n-i;j++)
         {
-            cout<<"\t"<<j+1<<"st Step : ";
+
 
             print_array(a,n);
-            cout<<" ->";
+
             if(a[j]>a[j+1])
             {
                 int temp =a[j];
@@ -35,12 +35,11 @@ void bubble_sort(int a[],int n)
             }
 
 
-            cout<<"\t";
-            print_array(a,n);
-            cout<<endl;
+
+
 
         }
-        cout<<endl;
+
         if(flag==0) break;
     }
 }

@@ -114,8 +114,8 @@ void insertion_at_specific_position(Doubly_Node* &head,int pos ,int val)
         i++;
     }
     Doubly_Node *t =temp->next;
-    t->prev =new_node;
-    new_node->next=t;
+//    t->prev =new_node;
+//    new_node->next=t;
     temp->next=new_node;
     new_node->prev=temp;
 
