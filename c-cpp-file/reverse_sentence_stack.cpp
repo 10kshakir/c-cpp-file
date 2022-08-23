@@ -6,29 +6,38 @@ using namespace std;
 
 void reverse_string(string str)
 {
-    Stack <string> w;
-    for(int i =0;i<str.length();i++)
+    Stack <string>st;
+    string w;
+    for(int i =str.length()-1;i>=0;i--)
     {
-        string d ="";
-        while(i<str.length()&&str[i]!=' ')
+        w="";
+        if(i!=str.length()-1)
         {
-            d+=str[i];
-            i++;
+            st.push(".");
         }
-        w.push(d);
+        while(i>=0&&str[i]!='.')
+        {
+            w+=str[i];
+             i--;
+
+
+        }
+
+
+        st.push(w);
     }
 
-    while(!w.check_empty())
+    while(!st.check_empty())
     {
-        cout<<w.pop()<<" ";
-
+        cout<<st.pop();
     }
 }
 
 
 int main()
 {
-    string st="I am Shakir";
+    string st;
+    cin>>st;
     reverse_string(st);
     return 0;
 }

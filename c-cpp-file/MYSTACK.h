@@ -2,14 +2,14 @@
 
 using namespace std;
 
-template <typename N> class Node
+template <typename N> class doubly_Node
 {
 public:
     N value;
-    Node* next;
-    Node* prev;
+    doubly_Node* next;
+    doubly_Node* prev;
 
-    Node(N n)
+    doubly_Node(N n)
     {
         value =n;
         next=NULL;
@@ -21,8 +21,8 @@ public:
 template <typename S> class Stack
 {
 public:
-    Node <S> *head ;
-    Node <S>  *top;
+    doubly_Node <S> *head ;
+    doubly_Node <S>  *top;
     int count =0;
 public:
     //constructor
@@ -35,7 +35,7 @@ public:
     //push element in a stack
     void push(S n)
     {
-        Node <S> *new_node =new  Node<S>(n);
+        doubly_Node <S> *new_node =new  doubly_Node<S>(n);
 
         if(head==NULL)
         {
@@ -53,7 +53,7 @@ public:
     //pop element
     S pop()
     {
-        Node <S> *del_node;
+        doubly_Node <S> *del_node;
         del_node=top;
         S chk ;
         if(head==NULL)
@@ -106,10 +106,10 @@ public:
         if(head==NULL)return true;
         else return false;
     }
-    int mid()
+    S mid()
     {
-        int d = (count/2);
-         Node <S> *temp=head;
+        int  d = (count/2);
+         doubly_Node <S> *temp=head;
         while(d--)
         {
            temp=temp->next;

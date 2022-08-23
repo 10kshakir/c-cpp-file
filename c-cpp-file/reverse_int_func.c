@@ -13,7 +13,7 @@ void reverse(int *a)
 
 int main()
 {
-    int a =567;
+    int a =599;
     reverse(&a);
     printf("%d",a);
     return 0;
