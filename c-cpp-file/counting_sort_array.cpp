@@ -43,20 +43,22 @@ int main()
     {
         count[i]+=count[i-1];
     }
-    cout<<endl<<"cumulative of Frequency array : ";
-    print_array(count,n1);
+
     //step 4
     int *final_a=new int[n]{0};
 
     for(int i =n-1;i>=0;i--)
     {
-        count[a[i]]--;
 
+        count[a[i]]--;
+        cout<<endl<<"cumulative of Frequency array : ";
+        print_array(count,n1);
         int k =count[a[i]];
 
-        final_a[k]=a[i];           // 7 2 9 2 7 4 5 1
+        final_a[k]=a[i];           // 3 3 1 7 4 4 5
 
-
+        cout<<endl<<"                  Final array : ";
+        print_array(final_a,n);
     }
 
     for(int i =0;i<n;i++)

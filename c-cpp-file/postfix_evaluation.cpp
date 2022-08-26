@@ -4,36 +4,35 @@
 #include"MYSTACK.h"
 
 using namespace std;
-
-int prefix_evaluation(string s)
+int postfix_evaluation(string st)
 {
-    Stack<int>st;
-    for(int i =s.length()-1;i>=0;i--)
+    Stack<int> k;
+    for(int i =0;i<st.length();i++)
     {
-        if(s[i]>='0'&&s[i]<='9')
+        if(st[i]>='0'&&st[i]<='9')
         {
-            st.push(s[i]-'0');
+            k.push(st[i]-'0');
         }
         else
         {
-            int a =st.pop();
-            int b =st.pop();
-            switch(s[i])
+            int b =k.pop();
+            int a =k.pop();
+            switch(st[i])
             {
             case '+':
-                st.push(a+b);
+                k.push(a+b);
                 break;
             case '-':
-                st.push(a-b);
+                k.push(a-b);
                 break;
             case '*':
-                st.push(a*b);
+                k.push(a*b);
                 break;
             case '/':
-                st.push(a/b);
+                k.push(a/b);
                 break;
             case '^':
-                st.push(pow(a,b));
+                k.push(pow(a,b));
                 break;
             default:
                 break;
@@ -41,15 +40,13 @@ int prefix_evaluation(string s)
             }
         }
     }
-    return st.return_top();
+    return k.pop();
 }
-// +*423
-//-+7*45+20
+
 int main()
 {
     string st;
     cin>>st;
-    cout<<prefix_evaluation(st);
-
+    cout<<postfix_evaluation(st);
     return 0;
 }

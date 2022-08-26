@@ -64,7 +64,7 @@ int precision_calc(char c)
     }else return -1;
 }
 
-string infix(string chk)
+string infix_to_prefix(string chk)
 {
     reverse(chk.begin(),chk.end());
     Stack <char> st;

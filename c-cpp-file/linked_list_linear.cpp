@@ -209,9 +209,16 @@ test search_value_dl_return(Node *&head,int key)
 
 void implement_value_after_specific_value(Node*&head,int search_value,int value)
 {
-    int pos ;
-    pos =search_value_ul(head,search_value);
-    insertion_at_specific_position(head,pos+1,value);
+    Node *temp =head;
+    Node* new_node =new Node(value);
+    while(temp->value!=search_value)
+    {
+        temp=temp->next;
+    }
+
+    new_node->next=temp->next;
+    temp->next=new_node;
+
 }
 
 

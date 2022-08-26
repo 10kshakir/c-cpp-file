@@ -27,6 +27,7 @@ void kth_reverse_queue(Queue<int>&q,int k)
         q.push(q1.pop());
     }
 
+
 }
 
 int main()

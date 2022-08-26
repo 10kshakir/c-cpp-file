@@ -4,27 +4,17 @@
 using namespace std;
 Stack<int> sortStack(Stack<int> &input)
 {
-    Stack<int> tmpStack;
-
-    while (!input.check_empty())
+    Stack<int> st;
+    while(!input.check_empty())
     {
-
-        int tmp =input.pop();
-
-
-
-        while (!tmpStack.check_empty() && tmpStack.return_top() < tmp)
+        int a = input.pop();
+        while(!st.check_empty()&&st.return_top()<a)
         {
-
-            input.push(tmpStack.pop());
-
+            input.push(st.pop());
         }
-
-
-        tmpStack.push(tmp);
+        st.push(a);
     }
-
-    return tmpStack;
+    return st;
 }
 int main()
 {

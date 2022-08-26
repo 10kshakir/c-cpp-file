@@ -5,9 +5,10 @@ using namespace std;
 
 int BinarySearch(int a[],int x,int lb,int hb)
 {
-    if(lb<=hb)
+    while(lb<=hb)
     {
         int mid =(lb+hb)/2;
+        cout<<"mid "<<mid<<endl;
         //mid case
         if(x==a[mid] )
         {
@@ -17,15 +18,17 @@ int BinarySearch(int a[],int x,int lb,int hb)
         //x>a[mid]
         else if(x>a[mid])
         {
-            return BinarySearch(a,x,mid+1,hb);
+            lb =mid+1;
+            cout<<"lb "<<lb<<"  hb "<<hb<<endl;
         }
 
         //x<a[mid]
         else{
-           return BinarySearch(a,x,lb,mid-1);
+           hb= mid-1;
+            cout<<"lb "<<lb<<"  hb "<<hb<<endl;
         }
     }
-    else return -1;
+     return -1;
 }
 
 int main()
@@ -38,7 +41,9 @@ int main()
 
     for(int i =0;i<size;i++)
     {
-        cin>>a[i];
+        cin>>a[i];  //1 2 4 9 12 14 16 21 32 35
+
+
     }
 
 
@@ -48,14 +53,14 @@ int main()
 
     int index=BinarySearch(a,check_value,0,size-1);
 
-    if(index!=-1)
-    {
-        cout<<"Index : "<<index<<" position : "<<index+1;
-    }
-    else
-    {
-        cout<<"Not found in the array"<<endl;
-    }
+//    if(index!=-1)
+//    {
+//        cout<<"Index : "<<index<<" position : "<<index+1;
+//    }
+//    else
+//    {
+//        cout<<"Not found in the array"<<endl;
+//    }
 
     return 0;
 }
