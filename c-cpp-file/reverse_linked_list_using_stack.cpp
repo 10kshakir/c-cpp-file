@@ -61,7 +61,7 @@ void delete_at_head(Node * &head)
         cout<<"there is no value in the list"<<endl;
     }
 }
-void reverse_linked_list(Node* &head)
+Node* reverse_linked_list(Node* &head)
 {
     Node* temp =head;
     Node* new_head =NULL;
@@ -71,13 +71,17 @@ void reverse_linked_list(Node* &head)
         Node* del =temp;
         st.push(del->value);
         temp=temp->next;
-        delete del;
+
     }
-    while(!st.check_empty())
+
+    temp =head;
+     while(!st.check_empty())
     {
-        insert_at_tail(new_head,st.pop());
+        temp->value=st.pop();
+
     }
-    head =new_head;
+   return temp;
+
 }
 
 int main()
@@ -87,9 +91,10 @@ int main()
     cin>>n;
     for(int i =1;i<=n;i++)
     {
+
         insert_at_tail(head,i);
     }
-    reverse_linked_list(head);
+    head =reverse_linked_list(head);
     display_List(head);
     return 0;
 
