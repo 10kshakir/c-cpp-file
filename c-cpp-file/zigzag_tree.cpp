@@ -1,16 +1,17 @@
 #include<iostream>
 #include<stack>
 #include<queue>
+#include<algorithm>
 
 using namespace std;
 
-class Node
+class TreeNode
 {
 public:
     int value;
-    Node * left_child;
-    Node * right_child;
-    Node(int value)
+    TreeNode * left_child;
+    TreeNode * right_child;
+    TreeNode(int value)
     {
         this->value = value;
         this->left_child = NULL;
@@ -18,17 +19,17 @@ public:
     }
 };
 
-void zigzag_order(Node* root)
+void zigzag_order(TreeNode* root)
 {
     if(root == NULL) return;
     int count = 0;
-    queue <Node*> q;
-    queue <Node*>q1;
+    queue <TreeNode*> q;
+    queue <TreeNode*>q1;
     q.push(root);
     q.push(NULL);
     while(!q.empty())
     {
-        Node* node =q.front();
+        TreeNode* node =q.front();
         q.pop();
         if(node!=NULL)
         {
@@ -44,11 +45,13 @@ void zigzag_order(Node* root)
                 }
             }else{
                 q1.push(node);
+
                 if(node->left_child!=NULL)
                 {
-                q.push(node->left_child);
+                    q.push(node->left_child);
                 }
-                    if(node->right_child!=NULL)
+
+                if(node->right_child!=NULL)
                 {
                     q.push(node->right_child);
                 }
@@ -69,28 +72,71 @@ void zigzag_order(Node* root)
     }
     while(!q1.empty())
     {
-       Node* d =q1.front();
+       TreeNode* d =q1.front();
         cout<<d->value<<" ";
         q1.pop();
     }
 }
 
+void zigzag(TreeNode* root)
+{
+    if (!root) return;
+    stack<TreeNode*> current;
+    stack<TreeNode*> next;
+    current.push(root);
+    bool lefttoright = true;
+    while (!current.empty()) {
+        TreeNode* temp = current.top();
+        current.pop();
+        if (temp) {
+            cout << temp->value << " ";
+            if (lefttoright) {
+                if (temp->left_child)
+                    next.push(temp->left_child);
+                if (temp->right_child)
+                    next.push(temp->right_child);
+            }
+            else {
+                if (temp->right_child)
+                    next.push(temp->right_child);
+                if (temp->left_child)
+                    next.push(temp->left_child);
+            }
+        }
+        if (current.empty()) {
+            lefttoright = !lefttoright;
+            swap(current, next);
+        }
+    }
+}
 int main()
 {
-      Node* root =new Node(3);
-   Node* a =new Node(9);
-   Node* b =new Node(20);
-   Node* c =new Node(15);
-   Node* d =new Node(7);
+     TreeNode* root =new TreeNode(15);
+    TreeNode* a =new TreeNode(11);
+    TreeNode* b =new TreeNode(26);
+    root->left_child=a;
+    root->right_child=b;
 
+    TreeNode* c =new TreeNode(8);
+    TreeNode* d =new TreeNode(12);
+    a->left_child=c;
+    a->right_child=d;
 
-   root->left_child=a;
-   root->right_child=b;
-   b->left_child=c;
-   b->right_child=d;
-//   b->left_child=e;
-//   b->right_child=f;
-  zigzag_order(root);
+    TreeNode* e =new TreeNode(20);
+    TreeNode* f =new TreeNode(30);
+    b->left_child=e;
+    b->right_child=f;
+
+    TreeNode* g =new TreeNode(6);
+    TreeNode* h =new TreeNode(9);
+    c->left_child=g;
+    c->right_child=h;
+
+    TreeNode* i =new TreeNode(14);
+    TreeNode* j =new TreeNode(35);
+    d->right_child=i;
+    f->right_child=j;
+  zigzag(root);
 
     return 0;
 }

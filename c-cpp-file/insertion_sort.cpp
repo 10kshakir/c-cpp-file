@@ -19,16 +19,14 @@ void insertion_sort(int a[],int n)
     {
         int key =a[i];
         int j =i-1;
-        cout<<i<<" step"<<endl;
         while(j>=0&&a[j]>key)
         {
             a[j+1]=a[j];
             j--;
-            print_array(a,n);//5 1 3 4 2 2
+
         }
         a[j+1]=key;
-        print_array(a,n);
-        cout<<endl;
+
     }
 }
 

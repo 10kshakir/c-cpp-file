@@ -80,9 +80,9 @@ void print_stack(stack<char> ch)
     cout<<endl;
 }
 
-string infix_to_prefix(string chk)
+string infix_to_postfix(string chk)
 {
-    reverse(chk.begin(),chk.end());
+
     cout<<chk<<endl;
     stack <char> st;
     stack<char>st1;
@@ -95,16 +95,16 @@ string infix_to_prefix(string chk)
             cout<<result<<endl;
 
         }
-        else if(chk[i]==')')
+        else if(chk[i]=='(')
         {
             st.push(chk[i]);
              cout<<"stack condition : ";
             st1 =st;
             print_stack(st1);
         }
-        else if( chk[i]=='(')
+        else if( chk[i]==')')
         {
-            while(!st.empty()&&st.top()!=')')
+            while(!st.empty()&&st.top()!='(')
             {
                 result+=st.top();
                 st.pop();
@@ -144,7 +144,7 @@ string infix_to_prefix(string chk)
         st.pop();
     }
 
-    reverse(result.begin(),result.end());
+
 
     return result;
 }
@@ -156,10 +156,11 @@ string infix_to_prefix(string chk)
 int main()
 {
     string inf="(5*((6^2)+(7-(2/6))))-((7*(8+1))+(5*4))";
-    string prefix =infix_to_prefix(inf);
+    string prefix =infix_to_postfix(inf);
     cout<<prefix<<endl;
 
 
     return 0;
 }
+
 

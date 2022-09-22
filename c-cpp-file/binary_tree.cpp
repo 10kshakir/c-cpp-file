@@ -1,5 +1,7 @@
 #include<iostream>
 #include<queue>
+#include<map>
+#include<vector>
 using namespace std;
 
 class TreeNode
@@ -16,32 +18,37 @@ public:
     }
 };
 
-void in_order(TreeNode* root,string &st)
+void vertical_order(TreeNode* root,int d , map<int, vector<int >> &m)
+{
+    if(root==NULL)
+        return;
+    m[d].push_back(root->value);
+    vertical_order(root->left_child,d-1,m);
+    vertical_order(root->right_child,d+1,m);
+}
+void in_order(TreeNode* root)
 {
     if(root ==NULL)return;
-    in_order(root->left_child,st);
-    st+=to_string(root->value);
-    st+=" ";
-    in_order(root->right_child,st);
+    in_order(root->left_child);
+    cout<<root->value<<" ";
+    in_order(root->right_child);
 }
 
-void post_order(TreeNode* root,string &st)
+void post_order(TreeNode* root)
 {
     if(root ==NULL)return;
-    post_order(root->left_child,st);
+    post_order(root->left_child);
 
-    post_order(root->right_child,st);
-    st+=to_string(root->value);
-    st+=" ";
+    post_order(root->right_child);
+    cout<<root->value<<" ";
 }
-void pre_order(TreeNode* root,string &st)
+void pre_order(TreeNode* root)
 {
     if(root ==NULL)return;
-    st+=to_string(root->value);
-    st+=" ";
-    pre_order(root->left_child,st);
+    cout<<root->value<<" ";
+    pre_order(root->left_child);
 
-    pre_order(root->right_child,st);
+    pre_order(root->right_child);
 }
 
 void space_print(int level)
@@ -113,6 +120,7 @@ void level_order_print(TreeNode* root)
         }
     }
 
+
 }
 
 int get_maximum_from_level(TreeNode* root,int level)
@@ -168,54 +176,62 @@ void display(TreeNode *root)
 
 int main()
 {
-    int n;
-    cin>>n;
-    TreeNode *allnodes[n];
-    for(int i =0;i<n;i++)
-    {
-        allnodes[i]=new TreeNode(-1);
-    }
-    for(int i =0;i<n;i++)
-    {
-        int root,left,right;
-        cin>>root>>left>>right;
+   TreeNode* root = new TreeNode(1);
+   TreeNode* a = new TreeNode(2);
+   TreeNode* b = new TreeNode(3);
+   root ->left_child =a;
+   root ->right_child =b;
 
-        allnodes[i]->value=root;
-        if(left>n-1||right>n-1)
-        {
-            cout<<"invalid index";
-           continue;
-        }
-        if(left!=-1)
-        {
+   TreeNode* d = new TreeNode(4);
+   TreeNode* e = new TreeNode(5);
+   a->left_child=d;
+   a->right_child=e;
 
-            allnodes[i]->left_child=allnodes[left];
-        }
-        if(right!=-1)
-        {
+//   TreeNode* f = new TreeNode(20);
+   TreeNode* g = new TreeNode(7);
+//   b->left_child=f;
+   b->left_child=g;
 
-            allnodes[i]->right_child=allnodes[right];
-        }
-    }
-//      print_tree(allnodes[0],0);
-//    string st="";
-//
-//    in_order(allnodes[0],st);
-//    cout<<"in order : "<<st<<endl;
-//
-//    string st2="";
-//
-//    pre_order(allnodes[0],st2);
-//    cout<<"pre order : "<<st2<<endl;
-//     string st3="";
-//
-//    post_order(allnodes[0],st3);
-//    cout<<"post order : "<<st3<<endl;
+//   TreeNode* h  = new TreeNode(6);
+//   TreeNode* i = new TreeNode(9);
+//   d->left_child=h;
+//   d->right_child=i;
 
-//    level_order_print(allnodes[0]);
+   TreeNode* k = new TreeNode(6);
+   e->right_child=k;
+
+//    TreeNode* j = new TreeNode(35);
+//
+//    g->right_child=j;
+
+//    cout<<"pre-order : ";
+//    pre_order(root);
 //    cout<<endl;
-//    cout<<get_maximum_from_level(allnodes[0],3);
-    display(allnodes[0]);
+//
+//    cout<<"inorder : ";
+//    in_order(root);
+//    cout<<endl;
+//
+//     cout<<"postorder : ";
+//    post_order(root);
+//    cout<<endl;
+//
+//    cout<<"level order : "<<endl;
+//    level_order_print(root);
+//    cout<<endl;
+
+    map<int,vector<int>>M;
+    vertical_order(root,0,M);
+    for(auto i: M)
+    {
+        cout<<i.first<<" ";
+        for(int j =0;j<(i.second).size();j++)
+        {
+            cout<<(i.second)[j]<<" ";
+        }
+        cout<<endl;
+    }
+
     return 0;
 }
 /*

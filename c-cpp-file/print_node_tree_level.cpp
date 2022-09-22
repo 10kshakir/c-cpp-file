@@ -1,13 +1,13 @@
 #include<iostream>
 #include<queue>
 using namespace std;
-class Node
+class TreeNode
 {
 public:
     int value;
-    Node * left_child;
-    Node * right_child;
-    Node(int value)
+    TreeNode * left_child;
+    TreeNode * right_child;
+    TreeNode(int value)
     {
         this->value = value;
         this->left_child = NULL;
@@ -45,17 +45,23 @@ void level_order_print(TreeNode* root)
             }
         }
     }
+    while(!q.empty())
+    {
+
+        cout<<q.front()<<" ";
+        q.pop();
+    }
 
 }
 
 
 int main()
 {
-    Node* root =new Node(3);
-   Node* a =new Node(9);
-   Node* b =new Node(20);
-   Node* c =new Node(15);
-   Node* d =new Node(7);
+    TreeNode* root =new TreeNode(3);
+   TreeNode* a =new TreeNode(9);
+   TreeNode* b =new TreeNode(20);
+   TreeNode* c =new TreeNode(15);
+   TreeNode* d =new TreeNode(7);
 
 
    root->left_child=a;

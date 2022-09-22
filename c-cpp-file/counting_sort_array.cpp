@@ -55,7 +55,7 @@ int main()
         print_array(count,n1);
         int k =count[a[i]];
 
-        final_a[k]=a[i];           // 3 3 1 7 4 4 5
+        final_a[k]=a[i];
 
         cout<<endl<<"                  Final array : ";
         print_array(final_a,n);
@@ -67,3 +67,7 @@ int main()
     }
     return 0;
 }
+/*
+8
+3 3 1 7 7 4 4 5
+*/

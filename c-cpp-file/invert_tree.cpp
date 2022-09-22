@@ -17,7 +17,7 @@ public:
     }
 };
 
-Node* invert_tree(Node* root)
+Node*  invert_tree(Node* root)
 {
     Node * root1 =root;
     if (root == NULL)

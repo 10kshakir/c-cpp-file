@@ -63,45 +63,46 @@ void print_boundary_of_tree(TreeNode* root)
 {
     if(root ==NULL) return;
     cout<<root->value<<" ";
+
     print_left_side_of_tree(root->left_child);
+
     print_leaf(root->left_child);
+
     print_leaf(root->right_child);
+
     print_right_side_of_tree(root->right_child);
 
 }
 
 int main()
 {
-    int n;
-    cin>>n;
-    TreeNode *allnodes[n];
-    for(int i =0;i<n;i++)
-    {
-        allnodes[i]=new TreeNode(-1);
-    }
-    for(int i =0;i<n;i++)
-    {
-        int root,left,right;
-        cin>>root>>left>>right;
+    TreeNode* root =new TreeNode(15);
+    TreeNode* a =new TreeNode(11);
+    TreeNode* b =new TreeNode(26);
+    root->left_child=a;
+    root->right_child=b;
 
-        allnodes[i]->value=root;
-        if(left>n-1||right>n-1)
-        {
-            cout<<"invalid index";
-           continue;
-        }
-        if(left!=-1)
-        {
+    TreeNode* c =new TreeNode(8);
+    TreeNode* d =new TreeNode(12);
+    a->left_child=c;
+    a->right_child=d;
 
-            allnodes[i]->left_child=allnodes[left];
-        }
-        if(right!=-1)
-        {
+    TreeNode* e =new TreeNode(20);
+    TreeNode* f =new TreeNode(30);
+    b->left_child=e;
+    b->right_child=f;
 
-            allnodes[i]->right_child=allnodes[right];
-        }
-    }
-    print_boundary_of_tree(allnodes[0]);
+    TreeNode* g =new TreeNode(6);
+    TreeNode* h =new TreeNode(9);
+    c->left_child=g;
+    c->right_child=h;
+
+    TreeNode* i =new TreeNode(14);
+    TreeNode* j =new TreeNode(35);
+    d->right_child=i;
+    f->right_child=j;
+
+    print_boundary_of_tree(root);
 
     return 0;
 }
