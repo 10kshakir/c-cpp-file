@@ -17,6 +17,11 @@ public:
 void insert_at_head(Node* &head,int n)
 {
     Node *new_node =new Node(n);
+    if(head==NULL)
+    {
+        head =new_node;
+        return;
+    }
 
     new_node->next = head;
 

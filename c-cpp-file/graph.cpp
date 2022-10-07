@@ -25,7 +25,7 @@ public:
 
     void print_neighbour(int chk)
     {
-        cout<<chk<<" : ";
+
         for(auto i = adj[chk].begin();i!=adj[chk].end();i++)
         {
             cout<<" ( "<<(*i).first<<" , "<<(*i).second<<" ) ";

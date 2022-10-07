@@ -15,7 +15,16 @@ public:
         right_child =NULL;
     }
 };
-
+int find_Max(TreeNode* root)
+{
+    if(root ==NULL)
+        return -1;
+    else if(root->right_child==NULL)
+    {
+        return root->value;
+    }
+    return find_Max(root->right_child);
+}
 TreeNode* insertion_BST(TreeNode* root,int val)
 {
     TreeNode* new_node =new TreeNode(val);
@@ -82,6 +91,7 @@ TreeNode* inorder_successor(TreeNode* root)
     return curr;
 }
 
+
 TreeNode* deletion_BST(TreeNode* root,int val)
 {
 
@@ -117,7 +127,7 @@ TreeNode* deletion_BST(TreeNode* root,int val)
         return root;
 
     }
-
+return root;
 
 }
 void level_order_print(TreeNode* root)
